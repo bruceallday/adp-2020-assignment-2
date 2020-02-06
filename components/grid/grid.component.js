@@ -8,20 +8,19 @@ import Tile from '../tile/tile.component'
 const Grid = () => {
 
     const board = [
-      ["", "", "", "", ""],
-      ["", "", "", "", ""],
-      ["", "", "", "", ""],
-      ["", "", "", "", ""],
-      ["", "", "", "", ""]
+      "", "", "", "", "",
+      "", "", "", "", "",
+      "", "", "", "", "",
+      "", "", "", "", "",
+      "", "", "", "", ""
     ]
     
     return(
         <View style={styles.container}>
-            {board.map((arr) => (
-                arr.map((item, index) => (
-                    <Tile key={index} img={index} />
-                ))
-            ))}
+
+           { board.map((item, index) => (
+                <Tile key={index} img={index}/>
+           ))}
         </View>
     )
 }

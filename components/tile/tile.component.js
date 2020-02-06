@@ -10,7 +10,7 @@ const Tile = (props) => {
 
     return (
       <View style={styles.tile}>
-        <Draggable x={20} y={20}>
+        <Draggable x={20} y={20} shouldReverse>
           <Image source={FOOD_IMAGES[img]} style={{ width: 40, height: 40 }} />
         </Draggable>
       </View>
