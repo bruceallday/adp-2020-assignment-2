@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Grid from './components/grid/grid.component'
 import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
 
 
 export default function App(props) {

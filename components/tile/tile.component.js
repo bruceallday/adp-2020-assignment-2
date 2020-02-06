@@ -1,20 +1,23 @@
-import React from 'react'
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import React, { useState } from 'react'
+import { Text, View, TouchableOpacity, Image } from "react-native"
 import { styles } from '../tile/tile.styles'
 import { FOOD_IMAGES } from './tile.images'
-import Draggable from "react-native-draggable";
+import { swipeDirections } from "react-native-swipe-gestures"
+// import Draggable from "react-native-draggable"
+
 
 const Tile = (props) => {
 
-    const { img } = props
-
+    const { img, item } = props;
+    
     return (
       <View style={styles.tile}>
-        <Draggable x={20} y={20} shouldReverse>
-          <Image source={FOOD_IMAGES[img]} style={{ width: 40, height: 40 }} />
-        </Draggable>
+          <Image
+            source={FOOD_IMAGES[img]}
+            style={{ width: 40, height: 40 }}
+          />
       </View>
-    );
+    )
 }
 
 export default Tile
