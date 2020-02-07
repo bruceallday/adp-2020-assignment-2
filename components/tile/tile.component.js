@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, Image } from "react-native"
+import { Text, View, TouchableOpacity, Image, Animated} from "react-native"
 import { styles } from '../tile/tile.styles'
 import { FOOD_IMAGES } from './tile.images'
 import Layout from '../../constants/layout'
@@ -8,10 +8,10 @@ import Layout from '../../constants/layout'
 
 const Tile = (props) => {
 
-    const { img, item } = props;
+    const { img, item, location } = props;
 
     return (
-      <View style={styles.tile}>
+      <View style={styles.tile } >
           <Image
             source={FOOD_IMAGES[img]}
             style={{ width: 40, height: 40 }}
