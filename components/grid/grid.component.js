@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, Image} from "react-native";
+import React, { useState, useContext } from 'react'
+import { Text, View, TouchableOpacity, Image} from "react-native"
 import Layout from '../../constants/layout'
 import { styles } from './grid.styles'
+
+import GameContext, { defaultContext } from '../../context/gameContext'
 
 import GestureRecognizer, {
   swipeDirections
@@ -11,30 +13,26 @@ import Tile from '../tile/tile.component'
 
 const Grid = () => {
 
-    // const board = new Array(25).fill(0)
-    const board = [
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-    ]
+    const gameContext = useContext(GameContext)
 
     const randomNumber = int => {
         let num = Math.floor(Math.random() * int)
         return num;
+    };
+
+    // const board = new Array(25).fill(0)
+    const board = [];
+    const boardSize = 5;
+    const imageRange = 10;
+    let i=0;
+    for(i;i<boardSize;i++){
+        let j=0;
+        board[i]=[]
+        for(j;j<boardSize;j++){
+            board[i][j] = randomNumber(imageRange);
+        }
     }
-
-    const boardData = board.map((row, index) =>
-        row.map((key, j) => 
-            <Tile
-                key={j}
-                img={randomNumber(10)}
-                item={key}
-            />
-        )
-    )
-
+    
     const tileWidth = Layout.width / 5
 
     const onSwipe = (gestureName, gestureState) => {
@@ -70,13 +68,29 @@ const Grid = () => {
                 break;
         }
     }
+    const consoleLogBoard=()=>{
+        let i =0;
+        for(i;i<5;i++){
+            console.log(
+              board[i][0],
+              board[i][1],
+              board[i][2],
+              board[i][3],
+              board[i][4],
+            );
+        }
+    }
+    consoleLogBoard();
 
+    
     const swap = (i, j, di, dj) => {
-        const swapStarter = boardData[i][j];
-        const swapEnder = boardData[i + di][j + dj];
+        const swapStarter = board[i][j];
+        const swapEnder = board[i + di][j + dj];
 
-        boardData[i][j] = swapEnder;
-        boardData[i + di][j + dj] = swapStarter;
+        board[i][j] = swapEnder;
+        board[i + di][j + dj] = swapStarter;
+
+        consoleLogBoard();
     };
 
     const config = {
@@ -85,16 +99,21 @@ const Grid = () => {
     };
     
     return (
-      <GestureRecognizer
-        style={styles.container}
-        onSwipe={onSwipe}
-        config={config}
-      >
-
-        {boardData}
-
-      </GestureRecognizer>
+      <GameContext.Provider value={defaultContext}>
+        <GestureRecognizer
+            style={styles.container}
+            onSwipe={onSwipe}
+            config={config}
+            >
+            {board.map((row, index) =>
+                row.map((item, j) => 
+                    <Tile key={j} img={item} />)
+            )}
+        </GestureRecognizer>
+      </GameContext.Provider>
     );
+        
+        
 }
 
 export default Grid 
