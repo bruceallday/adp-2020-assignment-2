@@ -5,8 +5,6 @@ import { FOOD_IMAGES } from './tile.images'
 import Layout from '../../constants/layout'
 import GameContext, { defaultContext } from '../../context/gameContext'
 import Draggable from 'react-native-draggable'
-// import Draggable from "react-native-draggable"
-
 
 const Tile = (props) => {
 
@@ -20,17 +18,23 @@ const Tile = (props) => {
       
         // console.log(event);
 
-        console.log("current x "+event.touchHistory.touchBank[1].currentPageX); 
-        console.log("start x " + event.touchHistory.touchBank[1].startPageX);
+        let startX = Math.round(event.touchHistory.touchBank[1].startPageX);
+        let currentX = Math.round(event.touchHistory.touchBank[1].currentPageX);
 
-        console.log("current y "+event.touchHistory.touchBank[1].currentPageY);
-        console.log("start y " + event.touchHistory.touchBank[1].startPageY);
+        let startY= Math.round(event.touchHistory.touchBank[1].startPageY);
+        let currentY = Math.round(event.touchHistory.touchBank[1].currentPageY);
 
-        let startX = event.touchHistory.touchBank[1].startPageX;
-        let currentX = event.touchHistory.touchBank[1].currentPageX;
+        let i = Math.round((startX - 0.5 * tileWidth) / tileWidth);
+        let j = Math.round((currentX - 0.5 * tileWidth) / tileWidth);
 
-         let startY= event.touchHistory.touchBank[1].startPageY;
-         let currentY = event.touchHistory.touchBank[1].currentPageY;
+        let k = Math.round((startY - 0.5 * tileWidth) / tileWidth);
+        let l = Math.round((currentY - 0.5 * tileWidth) / tileWidth);
+
+        console.log("X POSITIONS: " + startX + " " + currentX);
+        console.log("Y POSITIONS: " + startY + " " + currentY);
+
+        console.log("X POSITIONS: " + i + " " + j);
+        console.log("Y POSITIONS: " + k + " " + l);
 
         if (currentX > startX) {
           console.log("DRAGGED RIGHT");
@@ -51,56 +55,12 @@ const Tile = (props) => {
         }
 
         if (currentY > startY + tileWidth / 2){
-          console.log("COLLIDED BOTTOM")
+          console.log("COLLIDED DOWN")
         }else if(currentY < startY - tileWidth / 2){
           console.log("COLLIDED TOP")
         }
 
-
-            
-
-
-      
-        // console.log( "CURRENT X:" + event.touchHistory.touchBank[1].currentPageX);
-        // console.log( "CURRENT Y:" + event.touchHistory.touchBank[1].currentPageY);
-
-        // console.log("LOCATION X:" + event.nativeEvent.changedTouches[0].locationX);
-        // console.log(
-        //   "LOCATION Y:" + event.nativeEvent.changedTouches[0].locationY
-        // );
-
-        let initialX = event.touchHistory.touchBank[1].currentPageX;
-        let initialY = event.touchHistory.touchBank[1].currentPageY;
-
-        let i = Math.round((initialX - 0.5 * tileWidth) / tileWidth)
-        let j = Math.round((initialY - 0.5 * tileWidth) / tileWidth)
-
-
-        // console.log(i, j)
-
-        // switch(gestureName){
-        // case SWIPE_UP:
-        //     console.log("SWIPE UP")
-        //     gameContext.swap(i, j, 0, -1)
-        //     break;
-            
-        // case SWIPE_DOWN:
-        //     console.log("Swiped down")
-        //     gameContext.swap(i, j, 0, -1)
-        //     break;
-
-        // case SWIPE_LEFT:
-        //     console.log("SWIPED LEFT")
-        //     gameContext.swap(i, j, -1, 0);
-        //     break;
-
-        // case SWIPE_RIGHT:
-        //     console.log("SWIPED RIGHT")
-        //     gameContext.swap(i, j, 0, -1)
-        //     break;
-    }
-
-      
+      }
 
     return (
       <View style={styles.tile}>
