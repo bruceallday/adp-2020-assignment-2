@@ -15,26 +15,23 @@ const Tile = (props) => {
 
     const tileWidth = Layout.width / 5
 
-    const dragIndex = (event) => {
-
+    const whileDrag = (event) => {
         // console.lo
-        let startX = (event.touchHistory.touchBank[1].startPageX);
-        let currentX = (event.touchHistory.touchBank[1].currentPageX);
+        let startPosX = (event.touchHistory.touchBank[1].startPageX);
+        let currentPosX = (event.touchHistory.touchBank[1].currentPageX);
 
-        let startY = (event.touchHistory.touchBank[1].startPageY);
-        let currentY = (event.touchHistory.touchBank[1].currentPageY);
+        let startPosY = (event.touchHistory.touchBank[1].startPageY);
+        let currentPosY = (event.touchHistory.touchBank[1].currentPageY);
 
-        let i = Math.round((startX - 0.5 * tileWidth) / tileWidth);
-        let j = Math.round((currentX - 0.5 * tileWidth) / tileWidth);
+        let startX = Math.round((startPosX - 0.5 * tileWidth) / tileWidth);
+        let startY = Math.round((startPosY - 0.5 * tileWidth) / tileWidth - 3);
 
-        let k = Math.round((startY - 0.5 * tileWidth) / tileWidth - 3);
-        let l = Math.round((currentY - 0.5 * tileWidth) / tileWidth - 3);
+        let currentX = Math.round((currentPosX - 0.5 * tileWidth) / tileWidth);
+        let currentY = Math.round((currentPosY - 0.5 * tileWidth) / tileWidth - 3);
 
         // console.log("X POSITIONS: " + startX + " " + currentX);
         // console.log("Y POSITIONS: " + startY + " " + currentY);
 
-        console.log("X POSITIONS: " + i + " " + j);
-        console.log("Y POSITIONS: " + k + " " + l);
 
         if (currentX > startX) {
           // console.log("DRAGGED RIGHT");
@@ -48,26 +45,25 @@ const Tile = (props) => {
           // console.log("DRAGGED UP")
         }
 
-        
-        if (currentX > startX + tileWidth / 2){
-          console.log("COLLIDED RIGHT");
-          gameContext.updateBoard(j, l, 1, 0);
+  
+        if (currentPosX > startPosX + tileWidth / 2){
+          // console.log("COLLIDED RIGHT");
+          gameContext.updateBoard(startX, startY, 1, 0);
 
-        }else if (currentX < startX - tileWidth / 2){
-          console.log("COLLIDED LEFT")
-          gameContext.updateBoard(j, l, -1, 0);
+        }else if (currentPosX < startPosX - tileWidth / 2){
+          // console.log("COLLIDED LEFT")
+          gameContext.updateBoard(startX, startY, -1, 0);
         }
 
-        if (currentY > startY + tileWidth / 2){
-          console.log("COLLIDED DOWN")
-          gameContext.updateBoard(j, l, 0, 1);
+        if (currentPosY > startPosY + tileWidth / 2){
+          // console.log("COLLIDED DOWN")
+          gameContext.updateBoard(startX, startY, 0, 1);
 
-        }else if(currentY < startY - tileWidth / 2){
-          console.log("COLLIDED TOP")
-          gameContext.updateBoard(j, l, 0, -1);
+        }else if(currentPosY < startPosY - tileWidth / 2){
+          // console.log("COLLIDED TOP")
+          gameContext.updateBoard(startX, startY, 0, -1);
         }
         // consoleLogCurrentBoard()
-
       }
 
     return (
@@ -76,7 +72,7 @@ const Tile = (props) => {
         style={styles.tile}
           x={20}
           y={20}
-          onDrag={event => dragIndex(event)}
+          onDragRelease={event => whileDrag(event)}
           shouldReverse
         >
           <Image source={FOOD_IMAGES[img]} style={{ width: 40, height: 40 }} />

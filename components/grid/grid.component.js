@@ -11,11 +11,14 @@ import { styles } from "./grid.styles"
 import Tile from "../tile/tile.component";
 
 const Grid = () => {
+
     console.log("GRID RENDER")
+
     const gameContext = useContext(GameContext)
 
     gameContext.createBoard()
-    // consoleLogCurrentBoard()
+    
+    consoleLogCurrentBoard()
     
     return (
       <GameContext.Provider value={defaultContext}>
