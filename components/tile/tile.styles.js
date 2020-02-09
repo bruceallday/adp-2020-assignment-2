@@ -9,6 +9,6 @@ export const styles = StyleSheet.create({
            justifyContent: "center",
            borderWidth: 1,
            borderColor: "black",
-           position: "relative"
+          //  position: "relative"
          },
        });

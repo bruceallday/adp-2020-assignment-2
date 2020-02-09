@@ -2,45 +2,45 @@ import { createContext } from 'react'
 import { randomNumber } from '../utils/utils'
 
 export const defaultContext = {
-    // GAME CONTEXT HERE
-    currentBoard: [],
-        updateBoard: board => {
-            defaultContext.currentBoard = board
-    },
+         // GAME CONTEXT HERE
+         currentBoard: [],
 
-    createBoard : () => {
-        const boardSize = 5;
-        const imageRange = 10;
-        let i=0;
-        for(i;i<boardSize;i++){
-            let j=0;
-            defaultContext.currentBoard[i] = [];
-            for(j;j<boardSize;j++){
-                defaultContext.currentBoard[i][j] = randomNumber(imageRange);
-            }
-        }
-    },
+         updateBoard: (i, j, directionI, directionJ) => {    
+             
+            // console.log(i, j)
+            // console.log(directionI, directionJ);
 
-    swap: (i, j, directionI, directionJ) => {
-        const swapStart = defaultContext.currentBoard[i][j]
-        const swapEnd = defaultContext.currentBoard[i + directionI][j + directionJ]
+            let ni = i - 0.5
+            console.log(ni)
+            // const swapStart = defaultContext.currentBoard[i - 1][j - 1]
+            //  console.log(swapStart);   
+            // const swapEnd = defaultContext.currentBoard[i][j]
+            //  console.log(swapEnd);   
 
-        defaultContext.currentBoard[i][j] = swapEnd
-        defaultContext.currentBoard[i + directionI][j + directionJ] = swapStart
+            // defaultContext.currentBoard[i][j] = swapEnd
+            // defaultContext.currentBoard[i + directionI][j + directionJ] = swapStart
 
-        const board = defaultContext.currentBoard
+            // consoleLogCurrentBoard();
+                                                        },
 
-        defaultContext.updateBoard(board);
-        consoleLogContextBoard()
-        console.log(defaultContext.currentBoard)
-    }
-};
+         createBoard: () => {
+           const boardSize = 5;
+           const imageRange = 10;
+           let i = 0;
+           for (i; i < boardSize; i++) {
+             let j = 0;
+             defaultContext.currentBoard[i] = [];
+             for (j; j < boardSize; j++) {
+               defaultContext.currentBoard[i][j] = randomNumber(imageRange);
+             }
+           }
+         },
+       };
 
-const consoleLogCurrentBoard = () => {
+export const consoleLogCurrentBoard = () => {
     let i = 0;
     for (i; i < 5; i++) {
     console.log(
-        "CONTEXT BOARD",
         defaultContext.currentBoard[i][0],
         defaultContext.currentBoard[i][1],
         defaultContext.currentBoard[i][2],
