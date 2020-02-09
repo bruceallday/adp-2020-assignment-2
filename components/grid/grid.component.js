@@ -10,36 +10,10 @@ import { styles } from "./grid.styles"
 import Tile from "../tile/tile.component";
 
 const Grid = () => {
-
+    console.log("GRID RENDER")
     const gameContext = useContext(GameContext)
 
-    gameContext.currentBoard = [];
-    const boardSize = 5;
-    const imageRange = 10;
-    let i=0;
-    for(i;i<boardSize;i++){
-        let j=0;
-        gameContext.currentBoard[i] = [];
-        for(j;j<boardSize;j++){
-            gameContext.currentBoard[i][j] = randomNumber(imageRange);
-        }
-    }
-
-    // const consoleLogBoard = () => {
-    //     let i = 0;
-    //     for (i; i < 5; i++) {
-    //         console.log(
-    //         "GRID BOARD",
-    //         defaultContext.currentBoard[i][0],
-    //         defaultContext.currentBoard[i][1],
-    //         defaultContext.currentBoard[i][2],
-    //         defaultContext.currentBoard[i][3],
-    //         defaultContext.currentBoard[i][4]
-    //         )
-    //     }
-    // }
-
-    // consoleLogBoard();
+    gameContext.createBoard()
 
     return (
       <GameContext.Provider value={defaultContext}>
