@@ -19,7 +19,6 @@ const Grid = () => {
 
     const gameContext = useContext(GameContext)
 
-    // const board = new Array(25).fill(0)
     gameContext.currentBoard = [];
     const boardSize = 5;
     const imageRange = 10;
@@ -89,10 +88,10 @@ const Grid = () => {
 
     consoleLogBoard();
 
-    const config = {
-        velocityThreshold: 0.01,
-        directionalOffsetThreshold: 80
-    }
+    // const config = {
+    //     velocityThreshold: 0.01,
+    //     directionalOffsetThreshold: 80
+    // }
     
     return (
       <GameContext.Provider value={defaultContext}>

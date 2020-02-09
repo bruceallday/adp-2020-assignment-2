@@ -19,19 +19,19 @@ export const defaultContext = {
     },
 
 
-    // swap: (i, j, directionI, directionJ) => {
-    //     const swapStart = defaultContext.currentBoard[i][j]
-    //     const swapEnd = defaultContext.currentBoard[i + directionI][j + directionJ]
+    swap: (i, j, directionI, directionJ) => {
+        const swapStart = defaultContext.currentBoard[i][j]
+        const swapEnd = defaultContext.currentBoard[i + directionI][j + directionJ]
 
-    //     defaultContext.currentBoard[i][j] = swapEnd
-    //     defaultContext.currentBoard[i + directionI][j + directionJ] = swapStart
+        defaultContext.currentBoard[i][j] = swapEnd
+        defaultContext.currentBoard[i + directionI][j + directionJ] = swapStart
 
-    //     const board = defaultContext.currentBoard
+        const board = defaultContext.currentBoard
 
-    //     defaultContext.updateBoard(board);
-    //     consoleLogContextBoard()
-    //     console.log(defaultContext.currentBoard)
-    // }
+        defaultContext.updateBoard(board);
+        consoleLogContextBoard()
+        console.log(defaultContext.currentBoard)
+    }
 };
 
 const consoleLogContextBoard = () => {
