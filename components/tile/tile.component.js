@@ -5,22 +5,24 @@ import { FOOD_IMAGES } from './tile.images'
 import Layout from '../../constants/layout'
 import GameContext, { defaultContext } from '../../context/gameContext'
 import Draggable from 'react-native-draggable'
-import { consoleLogCurrentBoard } from "../../context//gameContext";
+import { consoleLogCurrentBoard } from "../../context/gameContext";
 
 
 const Tile = (props) => {
+
     const gameContext = useContext(GameContext)
-
     const { img, index} = props;
-
     const tileWidth = Layout.width / 5
 
     const whileDrag = (event) => {
-        // console.lo
-        let startPosX = (event.touchHistory.touchBank[1].startPageX);
-        let currentPosX = (event.touchHistory.touchBank[1].currentPageX);
 
+        let dX = 0
+        let dY = 0
+
+        let startPosX = (event.touchHistory.touchBank[1].startPageX);
         let startPosY = (event.touchHistory.touchBank[1].startPageY);
+
+        let currentPosX = event.touchHistory.touchBank[1].currentPageX;
         let currentPosY = (event.touchHistory.touchBank[1].currentPageY);
 
         let startX = Math.round((startPosX - 0.5 * tileWidth) / tileWidth);
@@ -29,9 +31,9 @@ const Tile = (props) => {
         let currentX = Math.round((currentPosX - 0.5 * tileWidth) / tileWidth);
         let currentY = Math.round((currentPosY - 0.5 * tileWidth) / tileWidth - 3);
 
+        // console.log(currentX, currentY)
         // console.log("X POSITIONS: " + startX + " " + currentX);
         // console.log("Y POSITIONS: " + startY + " " + currentY);
-
 
         if (currentX > startX) {
           // console.log("DRAGGED RIGHT");
@@ -45,37 +47,45 @@ const Tile = (props) => {
           // console.log("DRAGGED UP")
         }
 
-  
         if (currentPosX > startPosX + tileWidth / 2){
           // console.log("COLLIDED RIGHT");
-          gameContext.updateBoard(startX, startY, 1, 0);
+          dX = 0
+          dY = 1
+          gameContext.dispatch({ type: "updateBoard", payload: { startX, startY, dX, dY } })
 
         }else if (currentPosX < startPosX - tileWidth / 2){
           // console.log("COLLIDED LEFT")
-          gameContext.updateBoard(startX, startY, -1, 0);
+          dX = -1;
+          dY = 0;
+          gameContext.dispatch({ type: "updateBoard", payload: { startX, startY, dX, dY } })
         }
 
         if (currentPosY > startPosY + tileWidth / 2){
           // console.log("COLLIDED DOWN")
-          gameContext.updateBoard(startX, startY, 0, 1);
+          dX = 0;
+          dY = 1;
+          gameContext.dispatch({ type: "updateBoard", payload: { startX, startY, dX, dY } })
 
         }else if(currentPosY < startPosY - tileWidth / 2){
           // console.log("COLLIDED TOP")
-          gameContext.updateBoard(startX, startY, 0, -1);
+          dX = 0;
+          dY = -1;
+          gameContext.dispatch({ type: "updateBoard", payload: { startX, startY, dX, dY } })
         }
-        // consoleLogCurrentBoard()
       }
 
     return (
       <View style={styles.tile}>
         <Draggable
-        style={styles.tile}
+          style={styles.tile}
           x={20}
           y={20}
-          onDragRelease={event => whileDrag(event)}
-          shouldReverse
+          onDragRelease={whileDrag}
+          shouldReverse={true}
+          imageSource={FOOD_IMAGES[img]}
+          style={{ width: 40, height: 40 }}
         >
-          <Image source={FOOD_IMAGES[img]} style={{ width: 40, height: 40 }} />
+          {/*<Image source={FOOD_IMAGES[img]} style={{ width: 40, height: 40 }} />*/}
         </Draggable>
       </View>
     );
