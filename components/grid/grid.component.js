@@ -9,7 +9,6 @@ import Tile from "../tile/tile.component";
 const Grid = () => {
 
     console.log("GRID RENDER")
-
     const gameContext = useContext(GameContext)
     const reducer = gameContext.reducer
     const initialState = gameContext.initialState
@@ -21,15 +20,15 @@ const Grid = () => {
     
     return (
       <GameContext.Provider value={defaultContext}>
-        <View style={styles.container}>
-          {state.board.map((row, index) =>
-            row.map((item, j) => (
-                  <Tile key={j} img={item} index={j} />
-            ))
-          )}
+        <View style={styles.outerContainer}>
+          <View style={styles.container}>
+            {state.board.map((row, index) =>
+              row.map((item, j) => <Tile key={j} img={item} index={j} />)
+            )}
+          </View>
         </View>
       </GameContext.Provider>
-    )
+    );
 }
 
 export default Grid 

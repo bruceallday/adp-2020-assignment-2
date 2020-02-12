@@ -20,38 +20,42 @@ export const defaultContext = {
     },
 
     initialState: {
-        board: [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]
+        board: [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5],[1, 2, 3, 4, 5],[1, 2, 3, 4, 5],[1, 2, 3, 4, 5]]
+        /* x is row, y is column
+         0,0 | 0,1
+         ---------
+         1,0 | 1,1
+        */
     },
 
     dispatch: () => {},
     reducer: (state, action) => {
 
         switch (action.type) {
-            case "updateBoard":
+          case "updateBoard":
+            const { startX, startY, currentX, currentY } = action.payload;
 
-            const { startX, startY, dX, dY } = action.payload;
+            let newBoard = state.board;
 
-            console.log("payload" + startX, startY, dX, dY);
-
-            // let tempBoard = state.board;
             const swapStart = state.board[startX][startY];
-            const swapEnd = state.board[startX + dX][startY + dY];
-            state.board[startX][startY] = swapEnd;
-            state.board[startX + dX][startY + dY] = swapStart;
+            const swapEnd = state.board[currentX][currentY];
+
+            newBoard[startX][startY] = swapEnd;
+            newBoard[currentX][currentY] = swapStart;
 
             let i = 0;
             for (i; i < 5; i++) {
-                console.log(
+              console.log(
                 state.board[i][0],
                 state.board[i][1],
                 state.board[i][2],
                 state.board[i][3],
                 state.board[i][4]
-                );
+              );
             }
 
             return {
-                board: state.board
+              board: newBoard
             };
         }
     }

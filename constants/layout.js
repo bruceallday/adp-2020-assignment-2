@@ -4,5 +4,6 @@ const { width, height } = Dimensions.get('window')
 
 export default {
     width: width,
-    height: height
+    height: height,
+    bottomClearenece: 100,
 }

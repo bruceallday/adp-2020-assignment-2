@@ -1,11 +1,17 @@
 import { StyleSheet } from 'react-native'
+import Layout from '../../constants/layout'
 
 export const styles = StyleSheet.create({
     container:{
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         flexWrap: 'wrap',
-        justifyContent: 'center',
-        alignItems: 'center',
+        marginTop: Layout.height - Layout.width - Layout.bottomClearenece,
+        height: Layout.width,
     },
+
+    outerContainer:{
+        width: '100%',
+        height: '100%',
+    }
 }) 
