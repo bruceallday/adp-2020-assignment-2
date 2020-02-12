@@ -21,11 +21,6 @@ export const defaultContext = {
 
     initialState: {
         board: [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5],[1, 2, 3, 4, 5],[1, 2, 3, 4, 5],[1, 2, 3, 4, 5]]
-        /* x is row, y is column
-         0,0 | 0,1
-         ---------
-         1,0 | 1,1
-        */
     },
 
     dispatch: () => {},
@@ -33,15 +28,15 @@ export const defaultContext = {
 
         switch (action.type) {
           case "updateBoard":
-            const { startX, startY, currentX, currentY } = action.payload;
+            const { startX, startY, dX, dY } = action.payload;
 
             let newBoard = state.board;
 
             const swapStart = state.board[startX][startY];
-            const swapEnd = state.board[currentX][currentY];
+            const swapEnd = state.board[startX + dX][startY + dY];
 
             newBoard[startX][startY] = swapEnd;
-            newBoard[currentX][currentY] = swapStart;
+            newBoard[startX + dX][startY + dY] = swapStart;
 
             let i = 0;
             for (i; i < 5; i++) {
@@ -60,22 +55,5 @@ export const defaultContext = {
         }
     }
 };
-
-
-
-
-
-//     export const consoleLogCurrentBoard = () => {
-//         let i = 0;
-//         for (i; i < 5; i++) {
-//         console.log(
-//             defaultContext.currentBoard[i][0],
-//             defaultContext.currentBoard[i][1],
-//             defaultContext.currentBoard[i][2],
-//             defaultContext.currentBoard[i][3],
-//             defaultContext.currentBoard[i][4],
-//         );
-//     }
-// };
 
 export default createContext(defaultContext)

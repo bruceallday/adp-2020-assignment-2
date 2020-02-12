@@ -15,8 +15,6 @@ const Grid = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
     gameContext.dispatch = dispatch
-
-    // defaultContext.createBoard()
     
     return (
       <GameContext.Provider value={defaultContext}>
