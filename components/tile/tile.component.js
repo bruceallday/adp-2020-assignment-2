@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { View } from "react-native"
 import { styles } from '../tile/tile.styles'
-import { FOOD_IMAGES } from './tile.images'
+import { ITEM_IMAGES } from './tile.images'
 import Layout from '../../constants/layout'
 import GameContext from '../../context/gameContext'
 import Draggable from 'react-native-draggable'
@@ -95,7 +95,7 @@ const Tile = (props) => {
           y={20}
           onDragRelease={whileDrag}
           shouldReverse={true}
-          imageSource={FOOD_IMAGES[img]}
+          imageSource={ITEM_IMAGES[img]}
           style={{ width: 40, height: 40 }}
         >
         </Draggable>

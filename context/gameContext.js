@@ -28,8 +28,9 @@ export const defaultContext = {
 
         switch (action.type) {
           case "updateBoard":
-            const { startX, startY, dX, dY } = action.payload;
 
+            const { startX, startY, dX, dY } = action.payload;
+ 
             let newBoard = state.board;
 
             const swapStart = state.board[startX][startY];
