@@ -96,7 +96,7 @@ const Tile = (props) => {
           onDragRelease={whileDrag}
           shouldReverse={true}
           imageSource={ITEM_IMAGES[img]}
-          style={{ width: 40, height: 40 }}
+          style={{ width: 160, height: 160 }}
         >
         </Draggable>
       </View>
