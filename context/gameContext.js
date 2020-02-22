@@ -55,7 +55,6 @@ export const defaultContext = {
             return {
               board: newBoard
             };
-       
         }
 	},
 
@@ -68,7 +67,7 @@ export const defaultContext = {
 			"COLUMNS = " + columnMatches
 		)
 
-		return [...rowMatches, ...columnMatches]
+		return [rowMatches, columnMatches]
 	},
 	
 	isMatch: (itemOne, itemTwo) => {
@@ -81,16 +80,14 @@ export const defaultContext = {
 		}
 	},
 
-
-
     checkRowsForMatch : (board) => {
 		let matches = []
+
 	 	board.map((row, i) => {
-		
 			let firstIndex = [0, i]
 			let potentialMatch = [firstIndex]
 			let currentImg = board[0][i]
-			console.log("CURRENT IMAGE = " + currentImg)
+
 			row.map((item, j) => {
 				let nextItem = (j + 1) < 5 ? board[j + 1][i] : null
 				if(defaultContext.isMatch(currentImg, nextItem)){
@@ -111,12 +108,12 @@ export const defaultContext = {
 
 	checkColumnsForMatch: (board) => {
 		let matches = []
-		board.map((row, i) => {
 
+		board.map((row, i) => {
 			let firstIndex = [i, 0]
 			let potentialMatch = [firstIndex]
 			let currentImg = board[i][0]
-			console.log("CURRENT IMAGE = " + currentImg)
+
 			row.map((item, j) => {
 				let nextItem = (j + 1) < 5 ? board[i][j + 1] : null
 				if (defaultContext.isMatch(currentImg, nextItem)) {
@@ -134,9 +131,6 @@ export const defaultContext = {
 		})
 		return matches
 	},
-
-
-	
 };
 
 export default createContext(defaultContext)
