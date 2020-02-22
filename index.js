@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Grid from './components/grid/grid.component'
 import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 
+import AppContainer from './src/app'
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -18,9 +18,10 @@ export default function App(props) {
     );
   } else {
     return (
-      <View style={styles.container} >
-        <Grid />
-      </View>
+      // <View style={styles.container} >
+      //   <Grid />
+      // </View>
+      <AppContainer />
     );
   }
 }

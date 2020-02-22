@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { View } from "react-native"
-import { styles } from '../tile/tile.styles'
+import { styles } from './tile.styles'
 import { ITEM_IMAGES } from './tile.images'
 import Layout from '../../constants/layout'
 import GameContext from '../../context/gameContext'

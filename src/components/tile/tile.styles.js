@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native"
-import Layout from '@constants/layout' 
+import Layout from '../../constants/layout'
+// import Layout from '@constans/layout' 
+
 
 export const styles = StyleSheet.create({
          tile: {
