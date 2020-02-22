@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
            alignItems: "center",
            justifyContent: "center",
            borderWidth: 1,
-           borderColor: "black",
+           borderColor: "#e43b44",
           //  position: "relative"
          },
        });

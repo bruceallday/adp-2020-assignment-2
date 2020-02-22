@@ -23,7 +23,7 @@ const Grid = () => {
             {state.board.map((row, index) =>
               row.map((item, j) => <Tile key={j} img={item} index={j} />)
             )}
-          </View>
+          </View> 
         </View>
       </GameContext.Provider>
     );

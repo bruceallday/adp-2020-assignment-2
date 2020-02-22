@@ -13,5 +13,6 @@ export const styles = StyleSheet.create({
     outerContainer:{
         width: '100%',
         height: '100%',
+        backgroundColor: '#181425',
     }
 }) 
