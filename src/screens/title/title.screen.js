@@ -6,10 +6,11 @@ import { styles } from './title.styles'
 export const TitleScreen = (props) => {
     return(
         <View style={styles.root}>
-            <Text>TITLE SCREEN</Text>
+            <Text style={styles.text}>TITLE SCREEN</Text>
             <TouchableOpacity
+                style={styles.text}
                 onPress={() => props.navigation.navigate('Game')}>
-                <Text>Play</Text>
+                <Text style={styles.text}>Play</Text>
             </TouchableOpacity>
         </View>
     )

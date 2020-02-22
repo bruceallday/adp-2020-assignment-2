@@ -8,6 +8,11 @@ export const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: "center",
+        backgroundColor: "#181425",
+    },
 
-    }
+    text: {
+        color: '#e43b44',
+    },
+
 }) 
