@@ -91,12 +91,13 @@ const Tile = (props) => {
     	<View style={styles.tile}>
         <Draggable
           style={styles.tile}
-          x={20}
-          y={20}
+          x={15}
+          y={15}
           onDragRelease={whileDrag}
           shouldReverse={true}
           imageSource={ITEM_IMAGES[img]}
           style={{ width: 160, height: 160 }}
+          renderSize={50}
         >
         </Draggable>
       </View>
