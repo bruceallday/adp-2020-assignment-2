@@ -5,5 +5,5 @@ const { width, height } = Dimensions.get('window')
 export default {
     width: width,
     height: height,
-    bottomClearenece: 70,
+    bottomClearenece: 60,
 }
