@@ -65,6 +65,10 @@ async function loadResourcesAsync() {
       require("./assets/Items/sword_03c.png"),
       require("./assets/Items/sword_03d.png"),
       require("./assets/Items/sword_03e.png"),
+
+      require("./assets/sounds/piano.wav"),
+      require("./assets/sounds/door-opening.wav"),
+
     ])
   ]);
 }

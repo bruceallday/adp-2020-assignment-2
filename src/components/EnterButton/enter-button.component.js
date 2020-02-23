@@ -4,28 +4,27 @@ import { Audio } from 'expo-av'
 
 import { styles } from './enter-button.styles'
 import ButtonImage from '../../../assets/button.gif'
-import DoorSound from '../../../assets/door-opening.wav'
+import DoorSound from '../../../assets/sounds/door-opening.wav'
 
 export const EnterButton = (props) =>{
 
     const { navigation } = props
 
-    const soundObject = new Audio.Sound()
+    const sound = new Audio.Sound()
 
     useEffect(() => { loadSound() }, [])
 
     const loadSound = async () => {
-        await soundObject.loadAsync(DoorSound)
+        await sound.loadAsync(DoorSound)
     }
 
-    const playSound = async () => {
-        await soundObject.playAsync()
+    const playSound = () => {
+        sound.playAsync(DoorSound)
     }
 
     const handlePress = () => {
         playSound()
         navigation.navigate('Game')
-        
     }
     
     return(
