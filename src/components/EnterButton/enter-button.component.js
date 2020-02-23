@@ -10,29 +10,22 @@ export const EnterButton = (props) =>{
 
     const { navigation } = props
 
-    // since the code for playing a sound is short
-    // i am just going to leave it here
     const soundObject = new Audio.Sound()
-    const loadSound = async () => {
-        try {
-            await soundObject.loadAsync(DoorSound)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+
     useEffect(() => { loadSound() }, [])
+
+    const loadSound = async () => {
+        await soundObject.loadAsync(DoorSound)
+    }
+
     const playSound = async () => {
-        try {
-            await soundObject.playAsync()
-        } catch (error) {
-            console.log(error)
-            // error but meh, just log it
-        }
+        await soundObject.playAsync()
     }
 
     const handlePress = () => {
         playSound()
         navigation.navigate('Game')
+        
     }
     
     return(
