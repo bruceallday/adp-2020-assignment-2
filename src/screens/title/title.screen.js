@@ -1,16 +1,19 @@
 import React from 'react'
-import { View, Text, TouchableOpacity} from 'react-native'
+import { View, Text, TouchableOpacity, Image} from 'react-native'
+
+import { MainTitle } from '../../components/main-title/main-title.component'
+import ButtonImage from '../../../assets/button.gif'
 
 import { styles } from './title.styles'
 
 export const TitleScreen = (props) => {
     return(
         <View style={styles.root}>
-            <Text style={styles.text}>TITLE SCREEN</Text>
+            <MainTitle/>
             <TouchableOpacity
-                style={styles.text}
+                style={styles.button}
                 onPress={() => props.navigation.navigate('Game')}>
-                <Text style={styles.text}>Play</Text>
+                <Image style={{ width: '70%', height: '70%', resizeMode: "cover"}} source={ButtonImage}/>
             </TouchableOpacity>
         </View>
     )
