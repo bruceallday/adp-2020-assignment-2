@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import Layout from '../../constants/layout'
 
 export const styles = StyleSheet.create({
 
@@ -10,21 +9,11 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#181425",
+        backgroundColor: "#000000",
     },
 
     text: {
         color: '#e43b44',
     },
-
-    button:{
-        flexDirection: 'column',
-        justifyContent: "center",
-        alignItems: "center",
-        color: '#e43b44',
-        width: '60%',
-        height: '10%',
-    },
-
 
 }) 

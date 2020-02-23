@@ -1,18 +1,20 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
-    root: {
-        width: '95%',
-        height: '30%',
-        display: 'flex',
+
+    button: {
         flexDirection: 'column',
         justifyContent: "center",
         alignItems: "center",
+        color: '#e43b44',
+        width: '60%',
+        height: '10%',
+        marginTop: 45,
     },
 
-    title:{
-        width: '90%',
-        height: '60%',
-        resizeMode: "cover" 
+    img: {
+        width: '70%',
+        height: '70%',
+        resizeMode: "cover"
     }
-})
+}) 

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
     root: {
-        width: '95%',
+        width: '50%',
         height: '30%',
         display: 'flex',
         flexDirection: 'column',
@@ -10,9 +10,9 @@ export const styles = StyleSheet.create({
         alignItems: "center",
     },
 
-    title:{
-        width: '90%',
-        height: '60%',
-        resizeMode: "cover" 
+    img:{
+        width: '100%',
+        height: '100%',
+        resizeMode: "cover"
     }
 })
