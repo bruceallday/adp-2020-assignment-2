@@ -6,7 +6,7 @@ export const defaultContext = {
     createBoard: () => {
         let board = []
         const boardSize = 5;
-        const imageRange = 10;
+        const imageRange = 5;
         let i = 0;
         for (i; i < boardSize; i++) {
             let j = 0;
@@ -16,11 +16,11 @@ export const defaultContext = {
             }
         }
         console.log(board)
-        return board
-    },
-
+		return board
+	},
+	
     initialState: {
-        board: [[5, 6, 4, 4, 5], [3, 2, 3, 1, 9], [4, 7, 8, 6, 5], [1, 2, 3, 4, 5], [9, 2, 1, 4, 7]]
+        board: [[0, 7, 3, 4, 5], [3, 4, 5, 4, 1], [2, 1, 3, 2, 5], [6, 5, 7, 4, 2], [2, 6, 4, 7, 3]]
     },
 
     dispatch: () => {},
@@ -41,21 +41,41 @@ export const defaultContext = {
 
             defaultContext.checkforMatches(newBoard)
 
-            let i = 0;
-            for (i; i < 5; i++) {
-              console.log(
-                newBoard[i][0],
-                newBoard[i][1],
-                newBoard[i][2],
-                newBoard[i][3],
-                newBoard[i][4],
-              );
-            }
+            // let i = 0;
+            // for (i; i < 5; i++) {
+            //   console.log(
+            //     newBoard[i][0],
+            //     newBoard[i][1],
+            //     newBoard[i][2],
+            //     newBoard[i][3],
+            //     newBoard[i][4],
+            //   );
+            // }
 
             return {
               board: newBoard
             };
         }
+	},
+
+	markItemsAsMatch: (matches, boardData => {
+		matches.map(match => {
+			match.map((element, index) => {
+				let i = element[0]
+				let j = element[1]
+				boardData[i][j].match = true
+			})
+		})
+	}),
+
+	isMatch: (itemOne, itemTwo) => {
+		if (itemOne !== null && itemTwo !== null) {
+			if (itemOne === itemTwo) {
+				return true
+			} else {
+				return false
+			}
+		}
 	},
 
 	checkforMatches : (board) => {
@@ -70,16 +90,6 @@ export const defaultContext = {
 		return [rowMatches, columnMatches]
 	},
 	
-	isMatch: (itemOne, itemTwo) => {
-		if (itemOne !== null && itemTwo !== null) {
-			if (itemOne === itemTwo) {
-				return true
-			} else {
-				return false
-			}
-		}
-	},
-
     checkRowsForMatch : (board) => {
 		let matches = []
 

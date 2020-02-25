@@ -21,7 +21,7 @@ const Grid = () => {
         <View style={styles.outerContainer}>
           <View style={styles.container}>
             {state.board.map((row, index) =>
-              row.map((item, j) => <Tile key={j} img={item} index={j} />)
+              row.map((item, j) => <Tile key={j} imgNum={item} index={j} />)
             )}
           </View> 
         </View>

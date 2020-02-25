@@ -26,12 +26,12 @@ export const Level = () => {
 
     const randomEnemy = () => {
         const images = [
-            Enemy,
+            // Enemy,
             Enemy2,
             // Enemy3,
         ]
 
-        return images[randomNumber(2)]
+        return images[randomNumber(1)]
     }
     return(
         <View style={styles.root}>

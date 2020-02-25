@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
 
     enemyImg:{
         // alignSelf: 'center',
-        marginTop: '25%',
+        marginTop: '30%',
         marginRight: '15%',
         position: 'absolute',
         zIndex: 999,
