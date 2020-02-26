@@ -32,7 +32,7 @@ export const TitleScreen = (props) => {
         <View style={styles.root}>
             <MainTitle/>
             <Door />
-            <EnterButton navigation={navigation} />
+            <EnterButton navDest={'Game'} />
         </View>
     )
 }

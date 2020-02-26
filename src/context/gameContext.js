@@ -58,15 +58,15 @@ export const defaultContext = {
         }
 	},
 
-	markItemsAsMatch: (matches, boardData => {
-		matches.map(match => {
-			match.map((element, index) => {
-				let i = element[0]
-				let j = element[1]
-				boardData[i][j].match = true
-			})
-		})
-	}),
+	// markItemsAsMatch: (matches, boardData => {
+	// 	matches.map(match => {
+	// 		match.map((element, index) => {
+	// 			let i = element[0]
+	// 			let j = element[1]
+	// 			boardData[i][j].match = true
+	// 		})
+	// 	})
+	// }),
 
 	isMatch: (itemOne, itemTwo) => {
 		if (itemOne !== null && itemTwo !== null) {

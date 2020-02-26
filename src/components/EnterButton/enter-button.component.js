@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 import { TouchableOpacity, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native' 
+
+
 import { Audio } from 'expo-av'
 
 import { styles } from './enter-button.styles'
@@ -7,24 +10,39 @@ import ButtonImage from '../../../assets/button.gif'
 import DoorSound from '../../../assets/sounds/door-opening.wav'
 
 export const EnterButton = (props) =>{
+    const { navDest } = props
+    const navigation = useNavigation();
 
-    const { navigation } = props
 
     const sound = new Audio.Sound()
 
     useEffect(() => { loadSound() }, [])
 
-    const loadSound = async () => {
-        await sound.loadAsync(DoorSound)
+    const handlePlayback = async (soundStatus) =>{
+        console.log('---- SOUND STATUS ----')
+        console.log('SOUND SHOULD PLAY >>', soundStatus.shouldPlay)
+        console.log('SOUND DID FINISH  >>', soundStatus.didJustFinish)
+        console.log('SOUND POS MILISEC >>', soundStatus.positionMillis)
+        console.log('---- SOUND STATUS ----')
+        if (soundStatus.didJustFinish){
+            await sound.stopAsync()
+        }
     }
 
-    const playSound = () => {
-        sound.playAsync(DoorSound)
+    const loadSound = async () => {
+        await sound.loadAsync(DoorSound)
+        sound.setOnPlaybackStatusUpdate(handlePlayback);
+    }
+
+    const playSound = async () => {
+        console.log("PLAY SOUND")
+        await sound.playAsync()
+        // await sound.stopAsync()
     }
 
     const handlePress = () => {
         playSound()
-        navigation.navigate('Game')
+        navigation.navigate(navDest)
     }
     
     return(
