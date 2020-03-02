@@ -3,11 +3,11 @@ import { View, Image } from 'react-native'
 
 import { randomNumber } from '../../utils/utils'
 
-import LevelImage from '../../../assets/level.png'
-import LevelImage_1 from '../../../assets/level1.png'
-import LevelImage_2 from '../../../assets/level2.png'
+import LevelImage from '../../../assets/level-images/level.png'
+import LevelImage_1 from '../../../assets/level-images/level1.png'
+import LevelImage_2 from '../../../assets/level-images/level2.png'
 
-import Enemy from '../../../assets/enemies/Knight-Idle.gif'
+// import Enemy from '../../../assets/enemies/Knight-Idle.gif'
 import Enemy2 from '../../../assets/enemies/ready_1.gif'
 // import Enemy3 from '../../../assets//enemies/imp_big.gif'
 
@@ -26,7 +26,7 @@ export const Level = () => {
 
     const randomEnemy = () => {
         const images = [
-            // Enemy,
+            // Enxemy,
             Enemy2,
             // Enemy3,
         ]

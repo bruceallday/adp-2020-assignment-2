@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native'
 
-import MainTitleImage from '../../../assets/main-title.gif'
+import MainTitleImage from '../../../assets/title-screen/main-title.gif'
 import { styles } from './main-title.styles' 
 
 export const MainTitle = () => {

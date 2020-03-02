@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { View } from "react-native"
+import { View,Text } from "react-native"
 import { styles } from './tile.styles'
 import { ITEM_OBJECTS } from './tile.images'
 import Layout from '../../constants/layout'
@@ -88,18 +88,21 @@ const Tile = (props) => {
     };
 
     return (
-    	<View style={styles.tile}>
-        <Draggable
-          style={styles.tile}
-          x={15}
-          y={15}
-          onDragRelease={whileDrag}
-          shouldReverse={true}
-          imageSource={ITEM_OBJECTS[imgNum].img}
-          style={{ width: 160, height: 160 }}
-          renderSize={50}
-        >
-        </Draggable>
+      <View style={styles.tile}>
+        {imgNum>=0 && imgNum <ITEM_OBJECTS.length &&
+          <Draggable
+            style={styles.tile}
+            x={15}
+            y={15}
+            onDragRelease={whileDrag}
+            shouldReverse={true}
+            imageSource={ITEM_OBJECTS[imgNum].img}
+            style={{ width: 160, height: 160 }}
+            renderSize={50}
+          ></Draggable>
+        }
+        {imgNum < 0 && <Text style={{color:"white"}}>blank</Text>}
+        {imgNum >= ITEM_OBJECTS.length && <Text style={{ color: "white" }}>num out of bounds</Text>}
       </View>
     );
 }

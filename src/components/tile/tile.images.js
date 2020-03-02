@@ -75,15 +75,7 @@ const fish = {
     match: false
 }
 
-
-
-
-
-
-
-
 export const ITEM_OBJECTS = [
-
     sword,
     sword3,
     arrow,

@@ -2,11 +2,10 @@ import React, { useEffect } from 'react'
 import { TouchableOpacity, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native' 
 
-
 import { Audio } from 'expo-av'
 
 import { styles } from './enter-button.styles'
-import ButtonImage from '../../../assets/button.gif'
+import ButtonImage from '../../../assets/title-screen/button.gif'
 import DoorSound from '../../../assets/sounds/door-opening.wav'
 
 export const EnterButton = (props) =>{
@@ -19,11 +18,6 @@ export const EnterButton = (props) =>{
     useEffect(() => { loadSound() }, [])
 
     const handlePlayback = async (soundStatus) =>{
-        console.log('---- SOUND STATUS ----')
-        console.log('SOUND SHOULD PLAY >>', soundStatus.shouldPlay)
-        console.log('SOUND DID FINISH  >>', soundStatus.didJustFinish)
-        console.log('SOUND POS MILISEC >>', soundStatus.positionMillis)
-        console.log('---- SOUND STATUS ----')
         if (soundStatus.didJustFinish){
             await sound.stopAsync()
         }

@@ -1,5 +1,6 @@
 import { createContext } from 'react'
 import { randomNumber } from '../utils/utils'
+import { ITEM_OBJECTS } from '../components/tile/tile.images'
 
 export const defaultContext = {
 
@@ -39,8 +40,12 @@ export const defaultContext = {
             newBoard[startX][startY] = swapEnd;
             newBoard[startX + dX][startY + dY] = swapStart;
 
-            defaultContext.checkforMatches(newBoard)
+			let allMatches = defaultContext.checkforMatches(newBoard)
 
+			if (allMatches.length != 0){
+				defaultContext.condenseColumns(newBoard, allMatches)
+			}
+			
             // let i = 0;
             // for (i; i < 5; i++) {
             //   console.log(
@@ -58,15 +63,19 @@ export const defaultContext = {
         }
 	},
 
-	// markItemsAsMatch: (matches, boardData => {
-	// 	matches.map(match => {
-	// 		match.map((element, index) => {
-	// 			let i = element[0]
-	// 			let j = element[1]
-	// 			boardData[i][j].match = true
-	// 		})
-	// 	})
-	// }),
+	markItemsAsMatch: (matches, boardData) => {
+		matches.map(matchArr => {
+			matchArr.map((element, index) => {
+				element.map(item => {
+					let i = item[0]
+					let j = item[1]
+					let MatchedItem = boardData[i][j]
+					ITEM_OBJECTS[MatchedItem].match = true
+					// console.log("MATCHED ITEM OBJECT", ITEM_OBJECTS[MatchedItem])
+				})
+			})
+		})
+	},
 
 	isMatch: (itemOne, itemTwo) => {
 		if (itemOne !== null && itemTwo !== null) {
@@ -81,11 +90,6 @@ export const defaultContext = {
 	checkforMatches : (board) => {
 		let rowMatches = defaultContext.checkRowsForMatch(board)
 		let columnMatches = defaultContext.checkColumnsForMatch(board)
-
-		console.log(
-			"ROWS = " + rowMatches,
-			"COLUMNS = " + columnMatches
-		)
 
 		return [rowMatches, columnMatches]
 	},
@@ -141,6 +145,31 @@ export const defaultContext = {
 		})
 		return matches
 	},
+
+	condenseColumns: (boardData, matches) => {
+		let spacesToFill = 0
+		matches.map((matchArr) => {
+			matchArr.map((match) => {
+				spacesToFill = match.length
+				match.map((location) => {
+					let i = location[0]
+					let j = location[1]
+
+					boardData[i][j] = -1
+
+					// const currentSpot = boardData[i][j]
+					// const newSpot = boardData[i][j + spacesToFill]
+
+					// boardData[i][j] = newSpot
+					// boardData[i][j + spacesToFill] = currentSpot
+
+					console.log("SPACES TO FILL", spacesToFill)
+
+
+				})
+			})
+		})
+	}
 };
 
 export default createContext(defaultContext)
