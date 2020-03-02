@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 import { randomNumber } from '../utils/utils'
 import { ITEM_OBJECTS } from '../components/tile/tile.images'
+import { condenseColumns } from '../../test';
 
 export const defaultContext = {
 
@@ -43,39 +44,29 @@ export const defaultContext = {
 			let allMatches = defaultContext.checkforMatches(newBoard)
 
 			if (allMatches.length != 0){
-				defaultContext.condenseColumns(newBoard, allMatches)
+				defaultContext.removeMatches(newBoard, allMatches)
+				defaultContext.condenseColumns(newBoard)
 			}
 			
-            // let i = 0;
-            // for (i; i < 5; i++) {
-            //   console.log(
-            //     newBoard[i][0],
-            //     newBoard[i][1],
-            //     newBoard[i][2],
-            //     newBoard[i][3],
-            //     newBoard[i][4],
-            //   );
-            // }
-
             return {
               board: newBoard
             };
         }
 	},
 
-	markItemsAsMatch: (matches, boardData) => {
-		matches.map(matchArr => {
-			matchArr.map((element, index) => {
-				element.map(item => {
-					let i = item[0]
-					let j = item[1]
-					let MatchedItem = boardData[i][j]
-					ITEM_OBJECTS[MatchedItem].match = true
-					// console.log("MATCHED ITEM OBJECT", ITEM_OBJECTS[MatchedItem])
-				})
-			})
-		})
-	},
+	// markItemsAsMatch: (matches, boardData) => {
+	// 	matches.map(matchArr => {
+	// 		matchArr.map((element, index) => {
+	// 			element.map(item => {
+	// 				let i = item[0]
+	// 				let j = item[1]
+	// 				let MatchedItem = boardData[i][j]
+	// 				ITEM_OBJECTS[MatchedItem].match = true
+	// 				// console.log("MATCHED ITEM OBJECT", ITEM_OBJECTS[MatchedItem])
+	// 			})
+	// 		})
+	// 	})
+	// },
 
 	isMatch: (itemOne, itemTwo) => {
 		if (itemOne !== null && itemTwo !== null) {
@@ -146,29 +137,44 @@ export const defaultContext = {
 		return matches
 	},
 
-	condenseColumns: (boardData, matches) => {
-		let spacesToFill = 0
+	removeMatches: (boardData, matches) => {
 		matches.map((matchArr) => {
 			matchArr.map((match) => {
-				spacesToFill = match.length
 				match.map((location) => {
 					let i = location[0]
 					let j = location[1]
 
 					boardData[i][j] = -1
 
-					// const currentSpot = boardData[i][j]
-					// const newSpot = boardData[i][j + spacesToFill]
-
-					// boardData[i][j] = newSpot
-					// boardData[i][j + spacesToFill] = currentSpot
-
-					console.log("SPACES TO FILL", spacesToFill)
-
-
 				})
 			})
 		})
+		console.log("FINISHED BOARD CHECK FOR MATCHED")
+	},
+
+	condenseColumns: (newBoard) => {
+    let numOfRows = newBoard[0].length
+    let numOfCols = newBoard.length
+    let spotsToFill = 0;
+    for (let i = 0; i < numOfRows; i++) {
+        spotsToFill = 0;
+        // Iterate through each column
+        for (let j = numOfCols - 1; j >= 0; j--) {
+            // Check to see if the element is a spot that needs filling.
+            if (newBoard[i][j] === -1) {
+                // Increment the spots to fill since we found a spot to fill.
+                spotsToFill++;
+                // Place the location above the top of the screen for when it "falls"
+
+            } else if (spotsToFill > 0) {
+                // Move bean downward
+                const currentSpot = newBoard[i][j];
+                const newSpot = newBoard[i][j + spotsToFill];
+                newBoard[i][j] = newSpot;
+                newBoard[i][j + spotsToFill] = currentSpot;
+            }
+        }
+    }
 	}
 };
 

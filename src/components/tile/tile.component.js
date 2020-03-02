@@ -89,7 +89,7 @@ const Tile = (props) => {
 
     return (
       <View style={styles.tile}>
-        {imgNum>=0 && imgNum <ITEM_OBJECTS.length &&
+        {imgNum >= 0 && imgNum < ITEM_OBJECTS.length &&
           <Draggable
             style={styles.tile}
             x={15}
