@@ -26,7 +26,7 @@ export const Level = () => {
 
     const randomEnemy = () => {
         const images = [
-            // Enxemy,
+            // Enemy,
             Enemy2,
             // Enemy3,
         ]

@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native"
 import Layout from '../../constants/layout'
 // import Layout from '@constans/layout' 
 
-
 export const styles = StyleSheet.create({
          tile: {
            width: Layout.width / 5,
@@ -11,6 +10,5 @@ export const styles = StyleSheet.create({
            justifyContent: "center",
            borderWidth: 1,
            borderColor: "#e43b44",
-          //  position: "relative"
          },
        });

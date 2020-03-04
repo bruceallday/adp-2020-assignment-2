@@ -12,7 +12,6 @@ export const EnterButton = (props) =>{
     const { navDest } = props
     const navigation = useNavigation();
 
-
     const sound = new Audio.Sound()
 
     useEffect(() => { loadSound() }, [])
@@ -31,7 +30,6 @@ export const EnterButton = (props) =>{
     const playSound = async () => {
         console.log("PLAY SOUND")
         await sound.playAsync()
-        // await sound.stopAsync()
     }
 
     const handlePress = () => {

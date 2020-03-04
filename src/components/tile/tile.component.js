@@ -29,6 +29,7 @@ const Tile = (props) => {
       let startX = Math.round((startPosX - originX - 0.5 * tileWidth) / tileWidth);
       let startY = Math.round((startPosY - originY - 0.5 * tileWidth) / tileWidth);
 
+      //USE THIS CODE IF YOU WANT AN ITEM TO BE DRAGGAB LE ANYWHERE ALONG THE ROW OR COLUMN
       let currentX = Math.round((currentPosX - originX - 0.5 * tileWidth) / tileWidth);
       let currentY = Math.round((currentPosY - originY - 0.5 * tileWidth) / tileWidth);
 
@@ -37,6 +38,8 @@ const Tile = (props) => {
       // console.log("END   POS   X,Y: " + currentPosX + " " + currentPosY);
       // console.log("START COORD X,Y: " + startX + " " + startY);
       // console.log("END   COORD X,Y: " + currentX + " " + currentY);
+
+      //COLLISIONS DETECTION FOR DEUGGING
 
       // if (currentX > startX) {
       //   // console.log("DRAGGED RIGHT");

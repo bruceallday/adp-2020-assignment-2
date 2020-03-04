@@ -54,20 +54,6 @@ export const defaultContext = {
         }
 	},
 
-	// markItemsAsMatch: (matches, boardData) => {
-	// 	matches.map(matchArr => {
-	// 		matchArr.map((element, index) => {
-	// 			element.map(item => {
-	// 				let i = item[0]
-	// 				let j = item[1]
-	// 				let MatchedItem = boardData[i][j]
-	// 				ITEM_OBJECTS[MatchedItem].match = true
-	// 				// console.log("MATCHED ITEM OBJECT", ITEM_OBJECTS[MatchedItem])
-	// 			})
-	// 		})
-	// 	})
-	// },
-
 	isMatch: (itemOne, itemTwo) => {
 		if (itemOne !== null && itemTwo !== null) {
 			if (itemOne === itemTwo) {
@@ -158,18 +144,15 @@ export const defaultContext = {
     let spotsToFill = 0;
     for (let i = 0; i < numOfRows; i++) {
         spotsToFill = 0;
-        // Iterate through each column
         for (let j = numOfCols - 1; j >= 0; j--) {
-            // Check to see if the element is a spot that needs filling.
             if (newBoard[i][j] === -1) {
-                // Increment the spots to fill since we found a spot to fill.
                 spotsToFill++;
-                // Place the location above the top of the screen for when it "falls"
 
             } else if (spotsToFill > 0) {
-                // Move bean downward
+
                 const currentSpot = newBoard[i][j];
-                const newSpot = newBoard[i][j + spotsToFill];
+				const newSpot = newBoard[i][j + spotsToFill];
+				
                 newBoard[i][j] = newSpot;
                 newBoard[i][j + spotsToFill] = currentSpot;
             }
