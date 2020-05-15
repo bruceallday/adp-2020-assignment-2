@@ -48,10 +48,10 @@ export const defaultContext = {
 				defaultContext.condenseColumns(newBoard)
 			}
 			
-            return {
-              board: newBoard
-            };
-        }
+				return {
+					board: newBoard
+				};
+		}
 	},
 
 	isMatch: (itemOne, itemTwo) => {
